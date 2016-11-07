@@ -1,0 +1,12 @@
+x = 5
+y = "hello"
+print(x + y)
+
+x = "hello"
+y = "world"
+print(x + y)
+
+x = 5
+y = "hola!" 
+x_modified = str(x)
+print(x_modified + y)
