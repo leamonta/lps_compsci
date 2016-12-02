@@ -11,5 +11,5 @@ else:
 	if name == "Minkus":
 		print("You're cool!")
 	else:
-		print("You're too many years old and your name i
+		print("You're too many years old and your name is not Minkus")
 
