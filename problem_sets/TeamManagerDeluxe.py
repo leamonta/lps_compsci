@@ -1,68 +1,80 @@
 # It will call the object and have the classes below
 class Players(object): 
-  """ Encapsulates the name, age, goals, jersey number, and position """
+  """ Encapsulates the name, age, goals,jersey number, and position """
 
   # The function, __init__ will call and define the classes below to self
   def __init__(self, name, age, goals, jerseynumber, position):
     self.name = name
     self.age = age
     self.goals = goals
-    self.jerseynumber
-    self.position
+    self.jerseynumber = jerseynumber
+    self.position = position
 
   # This function will give us the summary back of the person name they entered, age and number of goals   
   def getStats(self):
     summary = 'Name: ' + self.name + '\n'
     summary = summary + 'Age: ' + str(self.age) + '\n'
     summary = summary + 'Goals: ' + str(self.goals) + '\n'
-    summary = summary + 'Jersey Number' + str(self.jerseynumber) + '\n'
-    summary = summary + 'Position' + str(self.position) + '\n'
+    summary = summary + 'Jersey Number: ' + str(self.jerseynumber) + '\n'
+    summary = summary + 'Position: ' + str(self.position) + '\n'
     return summary
 
 
 
 
 # This is an empty list because the user needs to make their own list of their players and keep it stored when print    
+print('Welcome to Team Manager Deluxe!')
+print('Do you want to start with a new team or open an exsiting team?')
+print('Enter your choice and press Enter')
+print('(1) Start with a new team')
+print('(2) Open a file for an existing team')
+
+
+#save the team in the file
+def saveTeam(playerList, filename):
+	myFile = open(filename , 'r')
+	myFile.close()
+	pass
+
+
+#load the team in the file
+def loadTeam(myPlayers):
+	print('What is the filename for your existing team? Enter the whole name, including its .tmd extension')
+ 	filechoice = raw_input()
+	team = []
+        myFile = open('pumas.tmd' , 'r')
+        line = myFile.readline()
+        while line != "":
+        	splitter = line.split()
+                line = myFile.readline()
+        myFile.close()
+	return myPlayers
+
+
 myPlayers = []
     
 # When the program is true, it will run and print out the options
-
-program = True 
-while program == True:
-	print('Welcome to Team Manager Deluxe!')
-        print('Do you want to start with a new team or open an exsiting team?')
-        print('Enter your choice and press Enter')
-        print('(1) Start with a new team')
-        print('(2) Open a file for an existing team')
 	
-	choose = raw_input()
+choose = raw_input()
 	
-	if choose == '1':
-		print('Enter their name: ')
-                playerName = raw_input()
-                print('Enter their age: ')
-                playerAge = raw_input()
-                print('Enter their number of goals: ')
-                playerGoals = raw_input()
-                print('Enter their jersey number: ')
-                playerJerseyNumber = raw_input()
-                print('Enter their position: ')
-                playerPosition = raw_input()
+if choose == '1':
+	print('Enter their name: ')
+        playerName = raw_input()
+        print('Enter their age: ')
+	playerAge = raw_input()
+       	print('Enter their number of goals: ')
+        playerGoals = raw_input()
+        print('Enter their jersey number: ')
+        playerJerseyNumber = raw_input()
+        print('Enter their position: ')
+        playerPosition = raw_input()
 
-                myPlayers.append(Players(playerName, playerAge, playerGoals, playerJerseyNumber, playerPosition))
+	myPlayers.append(Players(playerName, playerAge, playerGoals, playerJerseyNumber, playerPosition))
 
 	
 
-	if choose == '2':
-		print('What is the filename for your existing team? Enter the whole name, including its .tmd extension')		
-	   	filechoice = raw_input()
-		team = []
-		myFile = open('pumas.tmd' , 'r')
-		line = myFile.readline()
-		while line != "":
-			splitter = line.split()
-			line = myFile.readline()
-		myFile.close()
+if choose == '2':
+	myPlayers = loadTeam(myPlayers)
 			
 
 program = True
@@ -102,10 +114,7 @@ while program == True:
 		 	print(p.getStats())
 
       	if choice == '3':
-		def saveTeam(playerList, filename):
-			myFile = open('pumas.tmd' , 'w')
-			myFile.close()
-			pass
+		myPlayers = saveTeam(myPlayers, 'pumas.tmd')
 			
 		
 
